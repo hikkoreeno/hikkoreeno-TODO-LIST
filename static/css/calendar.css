@@ -39,7 +39,7 @@
 }
 
 .control-btn {
-    background: #4facfe;
+    background: #2196F3;
     color: white;
     border: none;
     width: 40px;
@@ -53,7 +53,7 @@
 }
 
 .control-btn:hover {
-    background: #3d8bfe;
+    background: #1976D2;
     transform: scale(1.1);
 }
 
@@ -123,7 +123,7 @@
 
 .calendar-day:hover {
     background: #f8f9fa;
-    border-color: #4facfe;
+    border-color: #2196F3;
 }
 
 .calendar-day.other-month {
@@ -132,7 +132,7 @@
 }
 
 .calendar-day.today {
-    background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+    background: linear-gradient(135deg, #2196F3 0%, #1976D2 100%);
     color: white;
 }
 
@@ -156,8 +156,8 @@
 }
 
 .day-todo-item {
-    background: rgba(79, 172, 254, 0.1);
-    border-left: 3px solid #4facfe;
+    background: rgba(33, 150, 243, 0.1);
+    border-left: 3px solid #2196F3;
     padding: 2px 6px;
     font-size: 0.75rem;
     border-radius: 3px;
@@ -214,7 +214,7 @@
 }
 
 .selected-date-header {
-    background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+    background: linear-gradient(135deg, #2196F3 0%, #1976D2 100%);
     color: white;
     padding: 20px;
     display: flex;
@@ -267,12 +267,12 @@
 
 .add-todo-form input:focus {
     outline: none;
-    border-color: #4facfe;
-    box-shadow: 0 0 0 3px rgba(79, 172, 254, 0.1);
+    border-color: #2196F3;
+    box-shadow: 0 0 0 3px rgba(33, 150, 243, 0.1);
 }
 
 .add-todo-form button {
-    background: #4facfe;
+    background: #2196F3;
     color: white;
     border: none;
     width: 40px;
@@ -301,7 +301,7 @@
     border-radius: 10px;
     padding: 15px;
     transition: all 0.3s ease;
-    border-left: 4px solid #4facfe;
+    border-left: 4px solid #2196F3;
 }
 
 .selected-todo-item.completed {
@@ -324,7 +324,7 @@
 .selected-todo-checkbox {
     width: 20px;
     height: 20px;
-    border: 2px solid #4facfe;
+    border: 2px solid #2196F3;
     border-radius: 50%;
     cursor: pointer;
     display: flex;
@@ -334,7 +334,7 @@
 }
 
 .selected-todo-checkbox.completed {
-    background: #4facfe;
+    background: #2196F3;
     color: white;
 }
 

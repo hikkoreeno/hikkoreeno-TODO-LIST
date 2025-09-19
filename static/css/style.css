@@ -25,7 +25,7 @@ body {
 
 /* ヘッダー */
 .header {
-    background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+    background: linear-gradient(135deg, #2196F3 0%, #1976D2 100%);
     color: white;
     padding: 30px;
     text-align: center;
@@ -112,12 +112,12 @@ body {
 
 .add-todo-form input:focus {
     outline: none;
-    border-color: #4facfe;
-    box-shadow: 0 0 0 3px rgba(79, 172, 254, 0.1);
+    border-color: #2196F3;
+    box-shadow: 0 0 0 3px rgba(33, 150, 243, 0.1);
 }
 
 #add-btn {
-    background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+    background: linear-gradient(135deg, #2196F3 0%, #1976D2 100%);
     color: white;
     border: none;
     padding: 15px 30px;
@@ -126,12 +126,11 @@ body {
     font-weight: 600;
     cursor: pointer;
     transition: all 0.3s ease;
-    white-space: nowrap;
 }
 
 #add-btn:hover {
     transform: translateY(-2px);
-    box-shadow: 0 10px 20px rgba(79, 172, 254, 0.3);
+    box-shadow: 0 10px 20px rgba(33, 150, 243, 0.3);
 }
 
 /* フィルターセクション */
@@ -158,14 +157,14 @@ body {
 }
 
 .filter-btn:hover {
-    border-color: #4facfe;
-    color: #4facfe;
+    border-color: #2196F3;
+    color: #2196F3;
 }
 
 .filter-btn.active {
-    background: #4facfe;
+    background: #2196F3;
     color: white;
-    border-color: #4facfe;
+    border-color: #2196F3;
 }
 
 .clear-btn {
@@ -221,7 +220,7 @@ body {
 .todo-checkbox {
     width: 24px;
     height: 24px;
-    border: 2px solid #4facfe;
+    border: 2px solid #2196F3;
     border-radius: 50%;
     cursor: pointer;
     display: flex;
@@ -231,7 +230,7 @@ body {
 }
 
 .todo-checkbox.completed {
-    background: #4facfe;
+    background: #2196F3;
     color: white;
 }
 
@@ -263,7 +262,7 @@ body {
 }
 
 .edit-btn:hover {
-    color: #4facfe;
+    color: #2196F3;
 }
 
 .delete-btn:hover {
@@ -372,8 +371,8 @@ body {
 .modal-body input:focus,
 .modal-body textarea:focus {
     outline: none;
-    border-color: #4facfe;
-    box-shadow: 0 0 0 3px rgba(79, 172, 254, 0.1);
+    border-color: #2196F3;
+    box-shadow: 0 0 0 3px rgba(33, 150, 243, 0.1);
 }
 
 .modal-footer {
@@ -395,12 +394,12 @@ body {
 }
 
 .btn-primary {
-    background: #4facfe;
+    background: #2196F3;
     color: white;
 }
 
 .btn-primary:hover {
-    background: #3d8bfe;
+    background: #1976D2;
     transform: translateY(-1px);
 }
 
