@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TODOアプリ - カレンダー</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/calendar.css') }}">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!-- ヘッダー -->
+        <header class="header">
+            <h1><i class="fas fa-calendar-alt"></i> TODOカレンダー</h1>
+            <div class="nav-buttons">
+                <a href="/" class="nav-btn">
+                    <i class="fas fa-list"></i> リスト表示
+                </a>
+                <a href="/calendar" class="nav-btn active">
+                    <i class="fas fa-calendar-alt"></i> カレンダー
+                </a>
+            </div>
+        </header>
+
+        <!-- カレンダーコントロール -->
+        <div class="calendar-controls">
+            <button class="control-btn" onclick="previousMonth()">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+            <h2 id="current-month-year">2025年1月</h2>
+            <button class="control-btn" onclick="nextMonth()">
+                <i class="fas fa-chevron-right"></i>
+            </button>
+            <button class="today-btn" onclick="goToToday()">
+                <i class="fas fa-calendar-day"></i> 今日
+            </button>
+        </div>
+
+        <!-- カレンダーグリッド -->
+        <div class="calendar-grid">
+            <div class="calendar-header">
+                <div class="day-header">日</div>
+                <div class="day-header">月</div>
+                <div class="day-header">火</div>
+                <div class="day-header">水</div>
+                <div class="day-header">木</div>
+                <div class="day-header">金</div>
+                <div class="day-header">土</div>
+            </div>
+            <div class="calendar-body" id="calendar-body">
+                <!-- カレンダーの日付がここに動的に生成されます -->
+            </div>
+        </div>
+
+        <!-- 選択された日付のTODO表示 -->
+        <div class="selected-date-todos" id="selected-date-todos" style="display: none;">
+            <div class="selected-date-header">
+                <h3 id="selected-date-title">2025年1月1日のTODO</h3>
+                <button class="close-btn" onclick="closeSelectedDate()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="selected-date-content">
+                <div class="add-todo-form">
+                    <input type="text" id="quick-todo-title" placeholder="この日のTODOを追加...">
+                    <button onclick="addQuickTodo()">
+                        <i class="fas fa-plus"></i>
+                    </button>
+                </div>
+                <div class="selected-todos-list" id="selected-todos-list">
+                    <!-- 選択された日付のTODOがここに表示されます -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- TODO追加モーダル -->
+    <div class="modal" id="add-todo-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3><i class="fas fa-plus"></i> TODOを追加</h3>
+                <button class="close-btn" onclick="closeAddModal()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <input type="text" id="modal-todo-title" placeholder="タイトル" maxlength="100">
+                <textarea id="modal-todo-description" placeholder="説明（オプション）" maxlength="200"></textarea>
+                <input type="date" id="modal-todo-date" placeholder="期限日">
+            </div>
+            <div class="modal-footer">
+                <button class="btn-secondary" onclick="closeAddModal()">キャンセル</button>
+                <button class="btn-primary" onclick="saveNewTodo()">追加</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 編集モーダル -->
+    <div class="modal" id="edit-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3><i class="fas fa-edit"></i> TODOを編集</h3>
+                <button class="close-btn" onclick="closeEditModal()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <input type="text" id="edit-title" placeholder="タイトル" maxlength="100">
+                <textarea id="edit-description" placeholder="説明（オプション）" maxlength="200"></textarea>
+                <input type="date" id="edit-due-date" placeholder="期限日">
+            </div>
+            <div class="modal-footer">
+                <button class="btn-secondary" onclick="closeEditModal()">キャンセル</button>
+                <button class="btn-primary" onclick="saveEdit()">保存</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 通知 -->
+    <div class="notification" id="notification"></div>
+
+    <script src="{{ url_for('static', filename='js/calendar.js') }}"></script>
+</body>
+</html>

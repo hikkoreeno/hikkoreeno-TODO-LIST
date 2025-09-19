@@ -1,0 +1,431 @@
+/* カレンダー専用スタイル */
+
+/* ナビゲーションボタン */
+.nav-buttons {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.nav-btn {
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 25px;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+}
+
+.nav-btn:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: translateY(-2px);
+}
+
+.nav-btn.active {
+    background: rgba(255, 255, 255, 0.4);
+    font-weight: 600;
+}
+
+/* カレンダーコントロール */
+.calendar-controls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    padding: 30px;
+    background: white;
+    border-bottom: 1px solid #e9ecef;
+}
+
+.control-btn {
+    background: #4facfe;
+    color: white;
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.control-btn:hover {
+    background: #3d8bfe;
+    transform: scale(1.1);
+}
+
+.today-btn {
+    background: #28a745;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 600;
+}
+
+.today-btn:hover {
+    background: #218838;
+    transform: translateY(-2px);
+}
+
+#current-month-year {
+    font-size: 1.5rem;
+    font-weight: 300;
+    color: #333;
+    margin: 0;
+    min-width: 150px;
+    text-align: center;
+}
+
+/* カレンダーグリッド */
+.calendar-grid {
+    padding: 0 30px 30px;
+}
+
+.calendar-header {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 1px;
+    background: #e9ecef;
+    margin-bottom: 1px;
+}
+
+.day-header {
+    background: #f8f9fa;
+    padding: 15px 5px;
+    text-align: center;
+    font-weight: 600;
+    color: #495057;
+    font-size: 0.9rem;
+}
+
+.calendar-body {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 1px;
+    background: #e9ecef;
+}
+
+.calendar-day {
+    background: white;
+    min-height: 120px;
+    padding: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    position: relative;
+    border: 2px solid transparent;
+}
+
+.calendar-day:hover {
+    background: #f8f9fa;
+    border-color: #4facfe;
+}
+
+.calendar-day.other-month {
+    background: #f8f9fa;
+    color: #adb5bd;
+}
+
+.calendar-day.today {
+    background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+    color: white;
+}
+
+.calendar-day.selected {
+    border-color: #ff6b6b;
+    box-shadow: 0 0 10px rgba(255, 107, 107, 0.3);
+}
+
+.day-number {
+    font-weight: 600;
+    font-size: 1.1rem;
+    margin-bottom: 5px;
+}
+
+.day-todos {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    max-height: 80px;
+    overflow: hidden;
+}
+
+.day-todo-item {
+    background: rgba(79, 172, 254, 0.1);
+    border-left: 3px solid #4facfe;
+    padding: 2px 6px;
+    font-size: 0.75rem;
+    border-radius: 3px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    transition: all 0.2s ease;
+}
+
+.day-todo-item.completed {
+    background: rgba(40, 167, 69, 0.1);
+    border-left-color: #28a745;
+    text-decoration: line-through;
+    opacity: 0.7;
+}
+
+.day-todo-item:hover {
+    transform: translateX(2px);
+}
+
+.todo-count {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background: #ff6b6b;
+    color: white;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.7rem;
+    font-weight: 600;
+}
+
+/* 選択された日付のTODO表示 */
+.selected-date-todos {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 400px;
+    height: 100vh;
+    background: white;
+    box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    transform: translateX(100%);
+    transition: transform 0.3s ease;
+    overflow-y: auto;
+}
+
+.selected-date-todos.show {
+    transform: translateX(0);
+}
+
+.selected-date-header {
+    background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+    color: white;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 1001;
+}
+
+.selected-date-header h3 {
+    margin: 0;
+    font-size: 1.2rem;
+    font-weight: 300;
+}
+
+.selected-date-header .close-btn {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 5px;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+}
+
+.selected-date-header .close-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.selected-date-content {
+    padding: 20px;
+}
+
+.add-todo-form {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.add-todo-form input {
+    flex: 1;
+    padding: 12px 15px;
+    border: 2px solid #e9ecef;
+    border-radius: 25px;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+}
+
+.add-todo-form input:focus {
+    outline: none;
+    border-color: #4facfe;
+    box-shadow: 0 0 0 3px rgba(79, 172, 254, 0.1);
+}
+
+.add-todo-form button {
+    background: #4facfe;
+    color: white;
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.add-todo-form button:hover {
+    background: #3d8bfe;
+    transform: scale(1.1);
+}
+
+.selected-todos-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.selected-todo-item {
+    background: #f8f9fa;
+    border-radius: 10px;
+    padding: 15px;
+    transition: all 0.3s ease;
+    border-left: 4px solid #4facfe;
+}
+
+.selected-todo-item.completed {
+    opacity: 0.7;
+    border-left-color: #28a745;
+}
+
+.selected-todo-item:hover {
+    background: #e9ecef;
+    transform: translateY(-2px);
+}
+
+.selected-todo-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 8px;
+}
+
+.selected-todo-checkbox {
+    width: 20px;
+    height: 20px;
+    border: 2px solid #4facfe;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.selected-todo-checkbox.completed {
+    background: #4facfe;
+    color: white;
+}
+
+.selected-todo-title {
+    flex: 1;
+    font-weight: 600;
+    color: #333;
+}
+
+.selected-todo-title.completed {
+    text-decoration: line-through;
+    color: #6c757d;
+}
+
+.selected-todo-actions {
+    display: flex;
+    gap: 5px;
+}
+
+.selected-todo-actions .action-btn {
+    padding: 5px;
+    font-size: 0.8rem;
+}
+
+.selected-todo-description {
+    color: #6c757d;
+    font-size: 0.85rem;
+    margin-left: 30px;
+    line-height: 1.4;
+}
+
+/* レスポンシブデザイン */
+@media (max-width: 768px) {
+    .calendar-controls {
+        padding: 20px 15px;
+        flex-wrap: wrap;
+    }
+    
+    #current-month-year {
+        font-size: 1.2rem;
+        min-width: 120px;
+    }
+    
+    .calendar-grid {
+        padding: 0 15px 20px;
+    }
+    
+    .calendar-day {
+        min-height: 80px;
+        padding: 5px;
+    }
+    
+    .day-number {
+        font-size: 1rem;
+    }
+    
+    .day-todo-item {
+        font-size: 0.7rem;
+        padding: 1px 4px;
+    }
+    
+    .selected-date-todos {
+        width: 100%;
+        transform: translateY(100%);
+    }
+    
+    .selected-date-todos.show {
+        transform: translateY(0);
+    }
+    
+    .nav-buttons {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .calendar-day {
+        min-height: 60px;
+        padding: 3px;
+    }
+    
+    .day-number {
+        font-size: 0.9rem;
+    }
+    
+    .day-todos {
+        max-height: 40px;
+    }
+    
+    .day-todo-item {
+        font-size: 0.65rem;
+    }
+}

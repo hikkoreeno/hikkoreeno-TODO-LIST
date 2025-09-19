@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TODOアプリ - Web版</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!-- ヘッダー -->
+        <header class="header">
+            <h1><i class="fas fa-tasks"></i> TODOアプリ</h1>
+            <div class="nav-buttons">
+                <a href="/" class="nav-btn active">
+                    <i class="fas fa-list"></i> リスト表示
+                </a>
+                <a href="/calendar" class="nav-btn">
+                    <i class="fas fa-calendar-alt"></i> カレンダー
+                </a>
+            </div>
+            <div class="stats" id="stats">
+                <span class="stat-item">
+                    <i class="fas fa-list"></i>
+                    <span id="total-count">0</span> 件
+                </span>
+                <span class="stat-item">
+                    <i class="fas fa-check-circle"></i>
+                    <span id="completed-count">0</span> 完了
+                </span>
+                <span class="stat-item">
+                    <i class="fas fa-clock"></i>
+                    <span id="pending-count">0</span> 未完了
+                </span>
+            </div>
+        </header>
+
+        <!-- TODO追加フォーム -->
+        <div class="add-todo-section">
+            <div class="add-todo-form">
+                <input type="text" id="todo-title" placeholder="新しいTODOを入力..." maxlength="100">
+                <input type="text" id="todo-description" placeholder="説明（オプション）" maxlength="200">
+                <input type="date" id="todo-due-date" placeholder="期限日（オプション）">
+                <button id="add-btn" onclick="addTodo()">
+                    <i class="fas fa-plus"></i> 追加
+                </button>
+            </div>
+        </div>
+
+        <!-- フィルターボタン -->
+        <div class="filter-section">
+            <button class="filter-btn active" onclick="filterTodos('all')">
+                <i class="fas fa-list"></i> すべて
+            </button>
+            <button class="filter-btn" onclick="filterTodos('pending')">
+                <i class="fas fa-clock"></i> 未完了
+            </button>
+            <button class="filter-btn" onclick="filterTodos('completed')">
+                <i class="fas fa-check-circle"></i> 完了済み
+            </button>
+            <button class="clear-btn" onclick="clearCompleted()">
+                <i class="fas fa-trash"></i> 完了済みを削除
+            </button>
+        </div>
+
+        <!-- TODOリスト -->
+        <div class="todo-list" id="todo-list">
+            <!-- TODOアイテムがここに動的に追加されます -->
+        </div>
+
+        <!-- 空の状態 -->
+        <div class="empty-state" id="empty-state" style="display: none;">
+            <i class="fas fa-clipboard-list"></i>
+            <h3>TODOがありません</h3>
+            <p>上のフォームから新しいTODOを追加してください</p>
+        </div>
+    </div>
+
+    <!-- 編集モーダル -->
+    <div class="modal" id="edit-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3><i class="fas fa-edit"></i> TODOを編集</h3>
+                <button class="close-btn" onclick="closeEditModal()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <input type="text" id="edit-title" placeholder="タイトル" maxlength="100">
+                <textarea id="edit-description" placeholder="説明（オプション）" maxlength="200"></textarea>
+                <input type="date" id="edit-due-date" placeholder="期限日（オプション）">
+            </div>
+            <div class="modal-footer">
+                <button class="btn-secondary" onclick="closeEditModal()">キャンセル</button>
+                <button class="btn-primary" onclick="saveEdit()">保存</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 通知 -->
+    <div class="notification" id="notification"></div>
+
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+</html>
